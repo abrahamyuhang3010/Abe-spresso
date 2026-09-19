@@ -1,0 +1,99 @@
+{
+  "passed": 20,
+  "checks": [
+    "Every ab token reference resolves",
+    "English-first sans stack, no serif UI families remain",
+    "Type roles and tap target are explicit",
+    "New components avoid tiny text, hardcoded colors and important patches",
+    "Documented text contrast pairs meet 4.5:1",
+    "Control borders and focus meet 3:1 against paper",
+    "Guide has one h1 and unique IDs, local links resolve",
+    "Local Barlow faces are valid SFNT files and licensed",
+    "Native dialog, toggle states, live status and reduced motion",
+    "Legacy entrypoint loads token definitions before styles",
+    "Source brand colors match supplied SVG artwork",
+    "Brand SVGs are unchanged, self-contained assets",
+    "Favicon and in-page logo roles remain separate in both entrypoints",
+    "Vivid pink is a nontext accent, never the primary white-label fill",
+    "Additional action, neutral and focus pairings are accessible",
+    "Active product styles contain no ad hoc hex colors or legacy red palette",
+    "CSS comments cannot swallow following layout and focus rules",
+    "Product CSS owns component rules without important or legacy typography",
+    "Product shares primitives before component-specific styles",
+    "Reading sizes and focus values remain canonical"
+  ],
+  "contrasts": [
+    {
+      "pair": "ink/paper",
+      "ratio": 14.67
+    },
+    {
+      "pair": "muted/paper",
+      "ratio": 5.62
+    },
+    {
+      "pair": "muted/surface",
+      "ratio": 4.98
+    },
+    {
+      "pair": "accent/paper",
+      "ratio": 6.77
+    },
+    {
+      "pair": "on-accent/accent",
+      "ratio": 6.97
+    },
+    {
+      "pair": "on-accent/accent-hover",
+      "ratio": 9.09
+    },
+    {
+      "pair": "accent/accent-soft",
+      "ratio": 6.24
+    },
+    {
+      "pair": "success/success-soft",
+      "ratio": 6.45
+    },
+    {
+      "pair": "warning/warning-soft",
+      "ratio": 5.81
+    },
+    {
+      "pair": "danger/danger-soft",
+      "ratio": 5.78
+    },
+    {
+      "pair": "control-border/paper",
+      "ratio": 4.02
+    },
+    {
+      "pair": "focus/paper",
+      "ratio": 6.41
+    },
+    {
+      "pair": "ink/surface",
+      "ratio": 13.01
+    },
+    {
+      "pair": "accent/surface",
+      "ratio": 6
+    },
+    {
+      "pair": "accent-hover/paper",
+      "ratio": 8.83
+    },
+    {
+      "pair": "control-border/surface",
+      "ratio": 3.56
+    },
+    {
+      "pair": "focus/surface",
+      "ratio": 5.68
+    },
+    {
+      "pair": "brand/surface",
+      "ratio": 3.6
+    }
+  ]
+}

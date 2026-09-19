@@ -1,0 +1,33 @@
+{
+  "name": "abe-spresso",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Abe-spresso editorial prototype and production planning repository",
+  "license": "UNLICENSED",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/abrahamyuhang3010/Abe-spresso.git"
+  },
+  "engines": {
+    "node": "^24.19.0",
+    "npm": "12.0.2"
+  },
+  "packageManager": "npm@12.0.2",
+  "scripts": {
+    "dev": "node scripts/serve.cjs",
+    "build": "node scripts/build.cjs",
+    "preview": "npm run build && node scripts/serve.cjs --dist",
+    "check": "node scripts/check.cjs",
+    "test": "npm run test:design && npm run test:prototype && npm run test:tooling",
+    "test:design": "node tests/design-system.test.cjs",
+    "test:prototype": "node tests/prototype.test.cjs",
+    "test:tooling": "node --test tests/tooling.test.cjs",
+    "test:browser": "node scripts/browser-test.cjs",
+    "test:sources": "python3 tests/verify-news-sources.py",
+    "verify": "npm run check && npm test && npm run test:browser"
+  },
+  "devDependencies": {
+    "jsdom": "30.1.0",
+    "playwright": "1.63.0"
+  }
+}

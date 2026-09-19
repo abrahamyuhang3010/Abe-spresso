@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f50057">
+  <title>Abespresso — 前端设计规范</title>
+  <link rel="icon" href="../assets/brand/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="tokens.css">
+  <link rel="stylesheet" href="components.css">
+  <link rel="stylesheet" href="styleguide.css">
+</head>
+<body class="ab-root">
+<a class="ab-skip" href="#main">跳到规范正文</a>
+<header class="sg-header ab-container">
+  <a class="sg-brand" href="../index.html"><img src="../assets/brand/logo.svg" width="44" height="44" alt=""><span lang="en">Abe-spresso</span></a>
+  <span class="ab-meta" lang="en">Design system / v1.2</span>
+</header>
+<main id="main" class="ab-container" tabindex="-1">
+  <section class="sg-intro" aria-labelledby="guide-title">
+    <div class="ab-stack">
+      <p class="ab-eyebrow" lang="en">The editorial standard</p>
+      <h1 class="ab-page-title" id="guide-title">清晰，有分量。<br>让信息回到主角。</h1>
+      <p class="sg-intro-deck">Abespresso 前端设计规范<br>无衬线排版 · 编辑式布局 · 有边界的 AI 日报</p>
+    </div>
+    <div class="sg-intro-note ab-stack">
+      <span class="sg-edition ab-numeric">01<span> / 规范版本</span></span>
+      <p class="ab-meta">把新闻的可信度与科技媒体的清晰感结合起来。不是复古报纸，不是工具仪表盘。</p>
+      <p class="ab-caption">2026.09.17 · 以下资讯均为排版示例<br>完整规则与迁移边界见配套 Markdown。</p>
+      <a class="ab-button" href="DESIGN-SYSTEM.md">查看完整规范 ↗</a>
+    </div>
+  </section>
+  <nav class="ab-nav sg-index" aria-label="规范章节">
+    <a href="#principles">01 原则</a><a href="#type">02 字体</a><a href="#palette">03 色彩</a><a href="#editorial">04 新闻组件</a><a href="#controls">05 交互状态</a><a href="#delivery">06 交付</a>
+  </nav>
+
+  <section class="sg-section" id="principles" aria-labelledby="principles-title">
+    <div class="ab-section-head"><h2 class="ab-title" id="principles-title">01 / 编辑，而非堆砌</h2><span class="ab-meta">三条最重要的判断</span></div>
+    <div class="sg-principles">
+      <article class="ab-stack"><span class="ab-eyebrow" lang="en">Clarity</span><h3 class="ab-title">先看懂，再深入</h3><p>只有一个主新闻。标题、原文摘录、来源与操作各司其职，不用十二张同样大小的卡片抹平优先级。</p></article>
+      <article class="ab-stack"><span class="ab-eyebrow" lang="en">Credibility</span><h3 class="ab-title">事实与判断分开</h3><p>卡片保留原文标题与短摘录，不生成摘要或价值解释。原始来源与延伸阅读分开，示例不冒充实时新闻。</p></article>
+      <article class="ab-stack"><span class="ab-eyebrow" lang="en">Restraint</span><h3 class="ab-title">科技感不靠特效</h3><p>用黑体字形、精确对齐和克制强调建立气质。避免霓虹渐变、悬浮卡片和无意义动效。</p></article>
+    </div>
+  </section>
+
+  <section class="sg-section" id="type" aria-labelledby="type-title">
+    <div class="ab-section-head"><h2 class="ab-title" id="type-title">02 / 一套无衬线语言</h2><span class="ab-meta">Barlow + Noto Sans SC</span></div>
+    <div class="sg-font-pair">
+      <article class="sg-font-sample ab-stack" lang="en"><p class="ab-eyebrow">Latin / Barlow</p><p class="sg-specimen">Aa 0123<br>Intelligence,<br>in perspective.</p><p class="ab-meta">Regular 400 · Semibold 600 · Bold 700</p></article>
+      <article class="sg-font-sample ab-stack"><p class="ab-eyebrow">中文 / Noto Sans SC</p><p class="sg-specimen">智能，有据。<br>理解技术，<br>而不追逐噪声。</p><p class="ab-meta">正文常规 · 操作半粗 · 标题粗体</p></article>
+    </div>
+    <p class="ab-notice sg-font-note">字体状态：Barlow 已随仓库提供；中文优先 Noto Sans SC，未安装时使用思源黑体、苹方、微软雅黑或系统无衬线回退。正式发布前需补齐中文字体分片。</p>
+    <div class="sg-type-table">
+      <div><span class="ab-meta">PAGE / 32–48</span><p class="ab-page-title">每日 AI，清醒精选</p></div>
+      <div><span class="ab-meta">SECTION / 32</span><p class="ab-section-title">值得深入的五件事</p></div>
+      <div><span class="ab-meta">TITLE / 24</span><p class="ab-title">当模型能力走向真实工作流</p></div>
+      <div><span class="ab-meta">READING / 18</span><p class="ab-prose">在采用一个新模型之前，先看任务完成率、使用成本和失败边界。技术报道需要呈现事实，也需要说明这些变化对产品决策意味着什么。</p></div>
+      <div><span class="ab-meta">BODY / 16</span><p class="ab-body">从一手资料出发，把复杂技术解释清楚。<span lang="en">Less noise. More understanding.</span></p></div>
+      <div><span class="ab-meta">META / 14</span><p class="ab-meta">原始公告 · 时间待核验 · 预计阅读 3 分钟</p></div>
+      <div><span class="ab-meta">CAPTION / 12</span><p class="ab-caption">主题配图，非事件现场。仅图片署名、非交互徽标和次要注释使用此字号。</p></div>
+    </div>
+  </section>
+
+  <section class="sg-section" id="palette" aria-labelledby="palette-title">
+    <div class="ab-section-head"><h2 class="ab-title" id="palette-title">03 / 从一杯咖啡，建立色彩秩序</h2><span class="ab-meta">品牌洋红 · 深莓行动色 · 暖咖啡中性色</span></div>
+    <div class="sg-brand-assets">
+      <figure class="sg-brand-asset"><img src="../assets/brand/logo.svg" width="96" height="96" alt="洋红色咖啡杯，深莓色杯柄与杯碟，暖灰蒸汽"><figcaption><strong>Logo / 页面内平台标识</strong><p class="ab-meta">用于刊头、页脚，与 Abe-spresso 字标组合。保留原始颜色和 1:1 比例。</p></figcaption></figure>
+      <figure class="sg-brand-asset"><img src="../assets/brand/icon.svg" width="48" height="48" alt="洋红底白色 A 缩略图标"><figcaption><strong>Icon / 网站缩略图标</strong><p class="ab-meta">用于浏览器标签页等小尺寸位置；此处仅展示用途，不代替页面 Logo。</p></figcaption></figure>
+    </div>
+    <h3 class="sg-palette-heading">源自 Logo 的三种颜色</h3>
+    <div class="sg-swatches sg-swatches--source">
+      <div><div class="sg-swatch sg-swatch--brand"></div><strong>Brand pink</strong><p class="ab-meta">#F50057 / 杯身 · 品牌识别</p></div>
+      <div><div class="sg-swatch sg-swatch--brand-deep"></div><strong>Deep magenta</strong><p class="ab-meta">#AD1457 / 杯柄与杯碟 · 行动</p></div>
+      <div><div class="sg-swatch sg-swatch--steam"></div><strong>Steam taupe</strong><p class="ab-meta">#BCAAA4 / 蒸汽 · 仅装饰</p></div>
+    </div>
+    <h3 class="sg-palette-heading">行动与交互</h3>
+    <div class="sg-swatches sg-swatches--source">
+      <div><div class="sg-swatch sg-swatch--accent"></div><strong>Action</strong><p class="ab-meta">#AD1457 / 按钮 / 链接 / 选中</p></div>
+      <div><div class="sg-swatch sg-swatch--accent-hover"></div><strong>Hover</strong><p class="ab-meta">#920046 / 主按钮悬停</p></div>
+      <div><div class="sg-swatch sg-swatch--accent-soft"></div><strong>Selected surface</strong><p class="ab-meta">#FDEFF2 / 选中浅底</p></div>
+    </div>
+    <h3 class="sg-palette-heading">暖咖啡阅读中性色</h3>
+    <div class="sg-swatches">
+      <div><div class="sg-swatch sg-swatch--paper"></div><strong>Paper</strong><p class="ab-meta">#FEFBFA / 页面底色</p></div>
+      <div><div class="sg-swatch sg-swatch--surface"></div><strong>Surface</strong><p class="ab-meta">#F6ECE9 / 辅助背景</p></div>
+      <div><div class="sg-swatch sg-swatch--ink"></div><strong>Ink</strong><p class="ab-meta">#2E2421 / 标题与正文</p></div>
+      <div><div class="sg-swatch sg-swatch--muted"></div><strong>Muted</strong><p class="ab-meta">#73625C / 次要信息</p></div>
+      <div><div class="sg-swatch sg-swatch--rule"></div><strong>Rule</strong><p class="ab-meta">#E4D6D1 / 装饰分隔</p></div>
+      <div><div class="sg-swatch sg-swatch--control-border"></div><strong>Control border</strong><p class="ab-meta">#8B7972 / 控件边界</p></div>
+    </div>
+    <div class="sg-color-rules ab-stack"><p><strong>品牌鲜艳，阅读克制。</strong>正文与标题使用咖啡墨色，大面积保留暖纸白。亮洋红只用于 Logo和少量强调线；不要把六类资讯染成六种颜色。</p><p class="ab-meta">白字 / 亮洋红仅 4.18:1，不用于普通字号主按钮；白字 / 深莓色为 6.97:1。蒸汽暖灰仅作装饰，不作正文、元数据或输入边界。焦点使用独立蓝青色 #24647B。</p></div>
+    <div class="ab-row sg-status-row"><span class="ab-tag ab-tag--success">✓ 已完成</span><span class="sg-warning-tag ab-tag">! 待核验</span><span class="sg-error-tag ab-tag">× 加载失败</span><p class="ab-meta">状态用文字和符号表达，不只靠颜色。错误色不复用品牌洋红；浅色分隔线不作为输入边界。</p></div>
+  </section>
+
+  <section class="sg-section" id="editorial" aria-labelledby="editorial-title">
+    <div class="ab-section-head"><h2 class="ab-title" id="editorial-title">04 / 新闻组件的层级</h2><span class="ab-tag">真实原文 · 样板节选 · 非实时新闻</span></div>
+    <div class="sg-editorial">
+      <article class="ab-story"><div class="ab-row"><span class="ab-eyebrow">主新闻</span><span class="ab-tag">原文标题 · 未改写</span></div>
+<h3 class="ab-lead-title" lang="en"><a href="https://www.anthropic.com/news/claude-3-7-sonnet" target="_blank" rel="noopener noreferrer">Claude 3.7 Sonnet and Claude Code</a></h3><figure><img class="ab-story-image" src="../assets/chip.jpg" width="1200" height="800" alt="芯片主题配图，用于展示新闻主图的16比9比例" loading="lazy"><figcaption class="ab-caption">主题配图，非事件现场 · 既有原型素材</figcaption></figure><p class="ab-meta">原文摘录 · 保留原语言</p><blockquote class="ab-source-quote" lang="en" cite="https://www.anthropic.com/news/claude-3-7-sonnet"><p>Claude 3.7 Sonnet shows particularly strong improvements in coding and front-end web development.</p></blockquote><div class="ab-story-meta ab-meta"><a class="ab-button ab-button--quiet" href="https://www.anthropic.com/news/claude-3-7-sonnet" target="_blank" rel="noopener noreferrer">原文 · Anthropic ↗</a><time datetime="2025-02-24">2025-02-24</time></div>
+        <div class="ab-row"><button class="ab-button" id="demo-read" type="button" aria-pressed="false">标记已读</button><button class="ab-button ab-button--quiet" id="demo-save" type="button" aria-pressed="false">收藏</button><span class="ab-caption">仅样板临时状态，不写入原型收藏</span></div>
+      </article><div class="sg-secondary"><article class="ab-story"><p class="ab-eyebrow">普通精选 / 原文标题</p><h3 class="ab-title" lang="en"><a href="https://huggingface.co/blog/smolagents" target="_blank" rel="noopener noreferrer">Introducing smolagents, a simple library to build agents</a></h3><p class="ab-meta">原文摘录 · 保留原语言</p><blockquote class="ab-source-quote" lang="en" cite="https://huggingface.co/blog/smolagents"><p>AI Agents are programs where LLM outputs control the workflow.</p></blockquote><div class="ab-story-meta ab-meta"><a class="ab-button ab-button--quiet" href="https://huggingface.co/blog/smolagents" target="_blank" rel="noopener noreferrer">原文 · Hugging Face ↗</a><time datetime="2024-12-31">2024-12-31</time></div></article><article class="ab-story"><p class="ab-eyebrow">普通精选 / 原文标题</p><h3 class="ab-title" lang="en"><a href="https://research.google/blog/accelerating-scientific-breakthroughs-with-an-ai-co-scientist/" target="_blank" rel="noopener noreferrer">Accelerating scientific breakthroughs with an AI co-scientist</a></h3><p class="ab-meta">原文摘录 · 保留原语言</p><blockquote class="ab-source-quote" lang="en" cite="https://research.google/blog/accelerating-scientific-breakthroughs-with-an-ai-co-scientist/"><p>We introduce AI co-scientist, a multi-agent AI system built with Gemini 2.0</p></blockquote><div class="ab-story-meta ab-meta"><a class="ab-button ab-button--quiet" href="https://research.google/blog/accelerating-scientific-breakthroughs-with-an-ai-co-scientist/" target="_blank" rel="noopener noreferrer">原文 · Google Research ↗</a><time datetime="2025-02-19">2025-02-19</time></div></article></div></div><article class="ab-quick"><span class="ab-eyebrow ab-numeric">06</span><div class="ab-stack"><p class="ab-meta">速览 / 不强制配图</p><h3 class="ab-title" lang="en"><a href="https://qwenlm.github.io/blog/qwen2.5-max/" target="_blank" rel="noopener noreferrer">Qwen2.5-Max: Exploring the Intelligence of Large-scale MoE Model</a></h3><p class="ab-meta">原文摘录 · 保留原语言</p><blockquote class="ab-source-quote" lang="en" cite="https://qwenlm.github.io/blog/qwen2.5-max/"><p>Qwen2.5-Max, a large-scale MoE model that has been pretrained on over 20 trillion tokens</p></blockquote><div class="ab-story-meta ab-meta"><a class="ab-button ab-button--quiet" href="https://qwenlm.github.io/blog/qwen2.5-max/" target="_blank" rel="noopener noreferrer">原文 · Qwen ↗</a><time datetime="2025-01-28">2025-01-28</time></div></div></article>
+    <p class="ab-notice">此处只展示主新闻、普通精选和速览三种密度，并非完整日报。业务首页仍是 Top 5 + 7；不能将本样板的条目数量复制为产品规则。来源核对清单见 news-sources.json；原文声明不等于本站独立验证。</p>
+  </section>
+
+  <section class="sg-section" id="controls" aria-labelledby="controls-title">
+    <div class="ab-section-head"><h2 class="ab-title" id="controls-title">05 / 交互也有统一语法</h2><span class="ab-meta">可点击、可键盘操作、可恢复</span></div>
+    <div class="sg-control-grid">
+      <article class="ab-stack"><h3 class="ab-title">按钮与反馈</h3><div class="ab-row"><button id="open-dialog" class="ab-button ab-button--primary" type="button">确认完成示例</button><a class="ab-button" href="#editorial">继续阅读</a><button class="ab-button" disabled type="button">暂不可用</button></div><p class="ab-meta">Tab 查看焦点；Enter 打开弹窗；Esc 关闭并返回触发按钮。</p><div class="ab-progress"><label for="demo-progress">样板已读 <span id="demo-progress-text" class="ab-numeric">0 / 1</span></label><progress id="demo-progress" value="0" max="1">0 / 1</progress></div><p id="demo-status" role="status" class="ab-meta">收藏与已读独立，刷新后重置。</p></article>
+      <article class="ab-stack"><h3 class="ab-title">输入与错误</h3><form id="search-example" class="ab-stack" novalidate><div class="ab-field"><label for="demo-query">搜索当前样板</label><input id="demo-query" class="ab-input" type="search" placeholder="输入标题关键词" aria-describedby="search-help search-error"><p id="search-help" class="ab-meta">只搜索这页的示例，不连接真实新闻。</p><p id="search-error" class="ab-error" hidden>请输入关键词，例如“模型”。</p></div><button class="ab-button" type="submit">搜索示例</button><div id="search-result" class="ab-meta" role="status"></div></form></article>
+    </div>
+    <div class="sg-control-grid sg-state-examples">
+      <div class="ab-empty"><p class="ab-caption">空状态样本 · 非当前样板收藏状态</p><h3 class="ab-title">还没有收藏</h3><p class="ab-meta">从当期日报选一条，留给稍后深入。</p><a class="ab-button" href="#editorial">浏览新闻样例</a></div>
+      <div class="ab-stack"><div class="ab-notice ab-notice--warning"><strong>原始发布时间待核验</strong><p>保留不确定性，不把收录日期当作发布日期。</p></div><div class="ab-notice ab-notice--error"><strong>加载失败 · 静态状态样本</strong><p>实际界面应保留已有数据与输入，并提供真实重试操作。</p></div></div>
+    </div>
+  </section>
+
+  <section class="sg-section" id="article-sample" aria-labelledby="article-title">
+    <div class="ab-section-head"><h2 class="ab-title" id="article-title">详情正文 / 阅读宽度样本</h2><span class="ab-meta">最大 720px · 18px / 1.85</span></div>
+    <article class="ab-prose sg-reading"><p class="ab-eyebrow">排版示例，非事实报道</p><h3 class="ab-title">从信息摄入，到形成自己的判断</h3><p>一份好的科技日报，不必把所有消息都搬到读者面前。它应该说明发生了什么，解释为什么值得注意，再留下可以继续核查的原始资料。</p><p>同样地，清晰的界面也不需要不断提醒自己有多先进。中文与英文都采用无衬线字体，让模型名称、技术术语和解释文字共享一致的节奏。</p><p lang="en">Good editorial design makes priorities visible. It gives each story enough space to be understood, while keeping sources, context, and uncertainty close to the claims they support.</p><p><a href="#type">返回字体尺度说明</a></p></article>
+  </section>
+
+  <section class="sg-section" id="delivery" aria-labelledby="delivery-title">
+    <div class="ab-section-head"><h2 class="ab-title" id="delivery-title">06 / 交付前，不靠感觉验收</h2><span class="ab-meta">完整清单见规范第 9 节</span></div>
+    <div class="sg-delivery"><div class="ab-stack"><h3 class="ab-title">结构与尺度</h3><ul><li>一页一个 h1，新闻优先级可辨</li><li>正文 16px 起，详情 18px</li><li>控件目标至少 44 × 44px</li><li>间距来自同一套 Token</li></ul></div><div class="ab-stack"><h3 class="ab-title">状态与边界</h3><ul><li>双语、长标题、来源缺失</li><li>键盘焦点、弹窗、空与错</li><li>320–1440px 与放大回流</li><li>字体失败时仍可阅读</li></ul></div><div class="ab-stack"><h3 class="ab-title">实现入口</h3><a href="DESIGN-SYSTEM.md">完整设计规范 ↗</a><a href="tokens.css">CSS Token ↗</a><a href="components.css">基础组件 ↗</a><a href="REFERENCES.md">参考与来源记录 ↗</a><a href="VALIDATION.md">验证记录与未覆盖项 ↗</a></div></div>
+    <p class="ab-notice sg-scope">迁移边界：v1.2 已迁移实际页面的字号、间距、44px控件与响应式；CJK字体分片和跨浏览器验收仍未完成。本样板不是全站合规证明，也不会修改你的现有收藏和阅读进度。</p>
+  </section>
+</main>
+<footer class="ab-container sg-footer"><span class="sg-footer-brand" lang="en"><img src="../assets/brand/logo.svg" width="32" height="32" alt="">Abe-spresso — A daily shot of AI.</span><a href="../index.html">返回现有原型 ↗</a></footer>
+<dialog class="ab-dialog" id="demo-dialog" aria-labelledby="dialog-title"><div class="ab-stack"><p class="ab-eyebrow">操作确认样例</p><h2 class="ab-title" id="dialog-title">完成这条示例阅读？</h2><p>只修改样板中的已读状态，不会影响现有原型，也不会改变收藏状态。</p></div><form method="dialog" class="ab-row"><button class="ab-button" value="cancel" autofocus>取消</button><button class="ab-button ab-button--primary" value="confirm">确认完成</button></form></dialog>
+<noscript><p class="ab-container ab-notice">规范可直接阅读。按钮状态演示需要启用 JavaScript。</p></noscript>
+<script src="styleguide.js"></script>
+</body>
+</html>

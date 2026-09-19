@@ -1,0 +1,19 @@
+[
+  "index.html",
+  "app.js",
+  "content.js",
+  "styles.css",
+  "architecture.css",
+  "assets/brand/icon.svg",
+  "assets/brand/logo.svg",
+  "assets/robot.jpg",
+  "assets/servers.jpg",
+  "assets/chip.jpg",
+  "assets/code.jpg",
+  "design/tokens.css",
+  "design/components.css",
+  "design/fonts/Barlow-Regular.ttf",
+  "design/fonts/Barlow-SemiBold.ttf",
+  "design/fonts/Barlow-Bold.ttf",
+  "design/fonts/Barlow-OFL.txt"
+]

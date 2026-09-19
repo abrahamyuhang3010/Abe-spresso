@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f50057"><meta name="description" content="Abe-spresso — A daily shot of AI.可交互 HTML 设计原型，展示有出处的历史新闻原文与短摘录，非实时资讯。">
+<title>Abe-spresso — A daily shot of AI.</title>
+<link rel="icon" type="image/svg+xml" href="assets/brand/icon.svg"><link rel="stylesheet" href="design/tokens.css"><link rel="stylesheet" href="design/components.css"><link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="architecture.css">
+</head>
+<body class="ab-root">
+<a class="skip-link" href="#main">跳到正文 / Skip to content</a>
+<div class="prototype-bar"><span id="prototype-label">原型示例 · 真实原文选编（2024.10—2025.03），非实时新闻 · 记录仅存本机</span><button data-action="about" id="prototype-about">关于此原型 ↗</button></div>
+<header class="site-header"><div class="masthead wrap">
+<a href="#/today" class="brand" aria-label="Abe-spresso 首页"><img class="brand-symbol" src="assets/brand/logo.svg" width="44" height="44" alt=""><span class="brand-type">Abe-spresso<span>A daily shot of AI.</span></span></a>
+<div class="header-actions"><button class="ab-button ab-button--quiet icon-button" data-action="search" aria-label="搜索本期 / Search edition"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></svg></button><button class="language-button" data-action="language" aria-label="切换语言 / Switch language">中 <span>/</span> EN</button><button class="ab-button ab-button--quiet login-button" data-action="account" id="account-button">本机演示 <span>↗</span></button></div>
+</div><div class="nav-border"><nav class="wrap navigation" aria-label="主导航"><div class="nav-links"><a href="#/today" data-nav="today">今日简报</a><a href="#/archive" data-nav="archive">往期归档</a><a href="#/saved" data-nav="saved">我的收藏<small id="saved-count"></small></a></div></nav></div></header>
+<main id="main" class="wrap" tabindex="-1"></main>
+<footer class="site-footer"><div class="wrap footer-inner"><div><a class="footer-brand" href="#/today"><img class="footer-logo" src="assets/brand/logo.svg" width="32" height="32" alt=""><div class="footer-wordmark">Abe-spresso<span> A daily shot of AI.</span></div></a></div><div class="footer-links"><button data-action="principles" id="principles-link">编辑原则</button><button data-action="sources" id="sources-link">来源与素材</button><button data-action="privacy" id="privacy-link">隐私说明</button><a href="#/archive" id="archive-footer">日报归档 ↗</a></div></div><div class="wrap footer-bottom"><span>© 2026 Abe-spresso · HTML Prototype</span><span id="footer-disclaimer">独立设计原型 · 与 Reuters 无关联</span><button data-action="top" aria-label="回到顶部 / Back to top">↑</button></div></footer>
+<dialog id="dialog" aria-labelledby="dialog-title"><button class="ab-button ab-button--quiet dialog-close icon-button" data-action="close" aria-label="关闭 / Close">×</button><div id="dialog-content"></div></dialog>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<noscript><div class="noscript">这是可交互设计原型，请启用 JavaScript 浏览。内含历史真实原文数据，未连接实时采集、账号或云端服务。</div></noscript>
+<script src="content.js"></script><script src="app.js"></script>
+</body></html>

@@ -1,0 +1,125 @@
+/* Abespresso Design System v1.2 · 2026-09-17
+   Canonical values. Font files are local; CJK uses the documented fallback until subset delivery. */
+@font-face {
+  font-family: "Barlow";
+  src: url("./fonts/Barlow-Regular.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Barlow";
+  src: url("./fonts/Barlow-SemiBold.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Barlow";
+  src: url("./fonts/Barlow-Bold.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
+:root {
+  /* Source colors from the supplied logo: do not recolor the SVG artwork. */
+  --ab-color-brand: #f50057;
+  --ab-color-brand-deep: #ad1457;
+  --ab-color-steam: #bcaaa4;
+  /* Text/actions use deep magenta; vivid pink is reserved for artwork and accents. */
+  --ab-color-paper: #fefbfa;
+  --ab-color-surface: #f6ece9;
+  --ab-color-ink: #2e2421;
+  --ab-color-muted: #73625c;
+  --ab-color-rule: #e4d6d1;
+  --ab-color-control-border: #8b7972;
+  --ab-color-accent: #ad1457;
+  --ab-color-accent-hover: #920046;
+  --ab-color-accent-soft: #fdeff2;
+  --ab-color-on-accent: #ffffff;
+  --ab-color-focus: #24647b;
+  --ab-color-success: #246247;
+  --ab-color-success-soft: #edf4ef;
+  --ab-color-warning: #80551c;
+  --ab-color-warning-soft: #faf1e5;
+  --ab-color-danger: #b3261e;
+  --ab-color-danger-soft: #fceeeb;
+  --ab-color-overlay: rgb(46 36 33 / 48%);
+
+  --ab-color-image-label: rgb(254 251 250 / 94%);
+  --ab-color-media-overlay: rgb(46 36 33 / 72%);
+
+  /* Latin first: placing the CJK family first would also replace Latin glyphs. */
+  --ab-font-sans: "Barlow", "Noto Sans SC", "Source Han Sans SC", "PingFang SC", "Microsoft YaHei", "Segoe UI", sans-serif;
+  --ab-font-heading: var(--ab-font-sans);
+  --ab-font-brand: var(--ab-font-sans);
+  --ab-font-code: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  --ab-weight-regular: 400;
+  --ab-weight-semibold: 600;
+  --ab-weight-bold: 700;
+  --ab-text-caption: .75rem;
+  --ab-text-meta: .875rem;
+  --ab-text-body: 1rem;
+  --ab-text-reading: 1.125rem;
+  --ab-text-title: 1.5rem;
+  --ab-text-brand: 2rem;
+  --ab-text-section: 2rem;
+  --ab-text-lead: clamp(1.75rem, 1.3rem + 1.3vw, 2.5rem);
+  --ab-text-page: clamp(2rem, 1.4rem + 2vw, 3rem);
+  --ab-leading-heading: 1.35;
+  --ab-leading-ui: 1.5;
+  --ab-leading-body: 1.75;
+  --ab-leading-reading: 1.85;
+  --ab-tracking-heading: 0;
+  --ab-tracking-en-heading: -.02em;
+  --ab-tracking-label: .06em;
+
+  --ab-space-0: 0;
+  --ab-space-1: .25rem;
+  --ab-space-2: .5rem;
+  --ab-space-3: .75rem;
+  --ab-space-4: 1rem;
+  --ab-space-6: 1.5rem;
+  --ab-space-8: 2rem;
+  --ab-space-12: 3rem;
+  --ab-space-16: 4rem;
+  --ab-space-24: 6rem;
+  --ab-width-page: 75rem;
+  --ab-width-reading: 45rem;
+  --ab-width-dialog: 35rem;
+  /* Editorial media and compact metadata column; never fixed page widths. */
+  --ab-width-media-dialog: 56.25rem;
+  --ab-width-thumbnail: 8rem;
+  --ab-width-story-meta: 14rem;
+  --ab-width-progress: 5rem;
+  --ab-focus-offset: 3px;
+  --ab-page-gutter: 1rem;
+  --ab-grid-gap: 1rem;
+  --ab-section-gap: 2rem;
+  --ab-target-min: 2.75rem;
+  --ab-logo-size: 2.75rem;
+  --ab-logo-size-small: 2rem;
+  --ab-icon-size: 1.25rem;
+  --ab-radius-none: 0;
+  --ab-radius-control: .25rem;
+  --ab-radius-dialog: .5rem;
+  --ab-border-thin: 1px;
+  --ab-border-strong: 2px;
+  --ab-shadow-overlay: 0 .5rem 2rem rgb(46 36 33 / 12%);
+  --ab-duration-fast: 120ms;
+  --ab-duration-normal: 180ms;
+  --ab-ease: cubic-bezier(.2, 0, 0, 1);
+  --ab-z-header: 10;
+  --ab-z-popover: 20;
+  --ab-z-toast: 40;
+}
+/* Breakpoints must be literals: CSS custom properties do not work in media queries. */
+@media (min-width: 48rem) {
+  :root { --ab-page-gutter: 1.5rem; --ab-grid-gap: 1.5rem; --ab-section-gap: 3rem; }
+}
+@media (min-width: 75rem) {
+  :root { --ab-page-gutter: 3rem; --ab-grid-gap: 2rem; --ab-section-gap: 4rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  :root { --ab-duration-fast: 0ms; --ab-duration-normal: 0ms; }
+}
