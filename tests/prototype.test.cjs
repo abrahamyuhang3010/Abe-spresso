@@ -12,7 +12,21 @@ function start(stored=null,denied=false,mutate=null){dom=new JSDOM(html,{url:'ht
 }
 function test(name,fn){fn();results.push(name);}
 function q(s){return d.querySelector(s)}function qa(s){return [...d.querySelectorAll(s)]}function click(s){assert(q(s),s);q(s).click();}
-async function route(hash){w.location.hash=hash;await new Promise(r=>setTimeout(r,5));}
+// Subscribe before navigation and wait for the real event, not a machine-speed-dependent sleep.
+// The application's synchronous hashchange handler was registered during start().
+function navigate(hash,action){
+ const win=w;
+ if(win.location.hash===hash){action();return Promise.resolve();}
+ return new Promise((resolve,reject)=>{
+  const cleanup=()=>{clearTimeout(timer);win.removeEventListener('hashchange',changed);};
+  const changed=()=>{if(win.location.hash===hash){cleanup();resolve();}};
+  const timer=setTimeout(()=>{cleanup();reject(new Error(`Timed out navigating to ${hash}; current route: ${win.location.hash}`));},5000);
+  win.addEventListener('hashchange',changed);
+  try{action();}catch(error){cleanup();reject(error);}
+ });
+}
+function route(hash){return navigate(hash,()=>{w.location.hash=hash;});}
+function clickRoute(selector){const link=q(selector);assert(link,selector);return navigate(new URL(link.href,w.location.href).hash,()=>link.click());}
 function select(s,value){q(s).value=value;q(s).dispatchEvent(new w.Event('change',{bubbles:true}));}
 const state=()=>JSON.parse(w.localStorage.getItem('afi-editorial-prototype-v1'));
 (async()=>{start();
@@ -62,16 +76,16 @@ test('Correct slogan in both brand placements and both languages',()=>{
 test('Every local image and stylesheet resolves on disk',()=>{for(const el of qa('img,link[rel="stylesheet"]')){const url=el.getAttribute('src')||el.getAttribute('href');assert(fs.existsSync(root+'/'+url),url);}});
 select('#content-type','opensource');test('Type filter preserves editorial order',()=>{assert.deepEqual(qa('[data-story]').map(x=>+x.dataset.story),[4,7,10,12]);assert(q('.filtered-count').textContent.includes('本期共 12'));assert(!q('.why-box'));assert(qa('[data-story]').every(el=>el.querySelector('h3')&&el.querySelector('p')));});
 select('#technical-topic','agents');test('Type and topic intersect',()=>assert.deepEqual(qa('[data-story]').map(x=>+x.dataset.story),[4]));
-click('[data-story="4"] h3 a');await new Promise(r=>setTimeout(r,5));test('Detail retains filtered-list return link',()=>assert.equal(q('.back-link').getAttribute('href'),'#/today'));
-click('.back-link');await new Promise(r=>setTimeout(r,5));test('Return restores filters',()=>{assert.equal(q('#technical-topic').value,'agents');assert.equal(q('#content-type').value,'opensource');});
+await clickRoute('[data-story="4"] h3 a');test('Detail retains filtered-list return link',()=>assert.equal(q('.back-link').getAttribute('href'),'#/today'));
+await clickRoute('.back-link');test('Return restores filters',()=>{assert.equal(q('#technical-topic').value,'agents');assert.equal(q('#content-type').value,'opensource');});
 select('#content-type','concepts');test('No fabricated content to fill empty category',()=>assert(q('.empty-state').textContent.includes('本期没有匹配')));
 click('[data-action="reset-filters"]');test('Reset returns all 12',()=>assert.equal(qa('[data-story]').length,12));
 click('[data-read="1"]');test('Read does not save',()=>{assert.deepEqual(state().read,[1]);assert.deepEqual(state().saved,[]);});
 click('[data-save="4"]');test('Guest save opens explicit demo dialog',()=>{assert(q('#dialog').open);assert(q('[data-action="enter-demo"]'));});click('[data-action="enter-demo"]');test('Demo resumes original save without marking read',()=>{assert.deepEqual(state().saved,[4]);assert.deepEqual(state().read,[1]);});
 await route('#/saved');test('Saved is learn-later queue with edition/source links',()=>{assert.equal(qa('[data-story]').length,1);assert(q('.resource-actions a[href="#/briefs/2026-09-14"]'));assert.equal(q('.story-source a[target="_blank"]').href,w.AFI_STORIES[3].originalArticle.url);assert(!q('.why-box'));assert(q('[data-story] p'));});
-click('[data-story="4"] h3 a');await new Promise(r=>setTimeout(r,5));test('Saved detail returns to Saved',()=>assert.equal(q('.back-link').getAttribute('href'),'#/saved'));
+await clickRoute('[data-story="4"] h3 a');test('Saved detail returns to Saved',()=>assert.equal(q('.back-link').getAttribute('href'),'#/saved'));
 for(const lang of ['zh','en']){if(d.documentElement.lang!==(lang==='zh'?'zh-CN':'en'))click('[data-action="language"]');for(let id=1;id<=12;id++){await route('#/briefs/2026-09-14/items/'+id);test(lang+' detail '+id+': original excerpt, honest provenance, unique IDs',()=>{assert(q('.detail-title').textContent.length);const sections=qa('.detail-section h2').map(e=>e.textContent);assert.equal(sections.length,1);assert.equal(q('.detail-title').textContent,w.AFI_STORIES[id-1].originalArticle.title);assert.equal(q('.detail-section blockquote p').textContent,w.AFI_STORIES[id-1].originalArticle.excerpt);assert(!/为什么重要|Why it matters/.test(q('#main').textContent));assert.equal(q('.story-source a').href,w.AFI_STORIES[id-1].originalArticle.url);const ids=qa('[id]').map(e=>e.id);assert.equal(new Set(ids).size,ids.length);assert(!q('#main').textContent.includes('undefined'));assert.equal(qa('.inline-video').length,id===11?1:0);assert.equal(qa('[data-action="video"]').length,id===11?1:0);assert(q('.source-disclosure'));assert.equal(qa('.source-facts>div').length,5);assert(q('.article-availability').textContent.includes(lang==='zh'?'当前仅提供原文节选':'Original excerpt only'));assert(q('.source-facts').textContent.includes(w.AFI_STORIES[id-1].originalArticle.verifiedAt));assert(!q('.article-body'));assert(!q('.detail-photo'));assert(q('.detail-toolbar').textContent.includes(lang==='zh'?'原文语言':'Original language'));assert(!q('.source-disclosure').open);assert.equal(qa('[data-read]').length,1);assert(!q('.detail-side'));});}}
-click('[data-finish-link]');await new Promise(r=>setTimeout(r,5));test('Last story returns to completion anchor',()=>assert.equal(w.lastScrolled,'edition-completion'));
+await clickRoute('[data-finish-link]');test('Last story returns to completion anchor',()=>assert.equal(w.lastScrolled,'edition-completion'));
 click('[data-action="language"]');await route('#/archive');test('Archive shows edition progress',()=>assert(q('.archive-progress').textContent.includes('1 / 12')));
 select('#archive-month','08');test('Archive empty month has no invented edition',()=>{assert(!q('.archive-card'));assert(q('.empty-state'));});click('[data-action="language"]');test('Language toggle retains archive month',()=>assert.equal(q('#archive-month').value,'08'));
 await route('#/today');click('[data-action="search"]');q('#search-input').value='open-source';q('#search-input').dispatchEvent(new w.Event('input',{bubbles:true}));test('Search indexes new type names',()=>assert.equal(qa('.search-result').length,4));q('#search-input').value='no-results-888';q('#search-input').dispatchEvent(new w.Event('input',{bubbles:true}));test('Search empty state',()=>assert.equal(qa('.search-result').length,0));click('[data-action="close"]');
